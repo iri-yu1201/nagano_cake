@@ -1,12 +1,40 @@
 Rails.application.routes.draw do
+
+
+  devise_for :admins, controllers: {
+        sessions: 'admins/sessions',
+        password: 'admins/passwords',
+      }
   namespace :admin do
     root to: 'homes#top'
-    #resources :sessions, only: [:new, :create, :destroy]
+    resources :items
+    resources :genres, only:[:index, :create, :edit, :update]
+    resources :customers, only:[:index, :create, :edit, :update]
+    resources :orders, only:[:index, :update]
+    resources :order_details, only:[:update]
   end
-  
-  devise_for :customers
+
+  devise_for :customers do
+    collection do
+      get 'unsubscribe'
+      patch 'withdrawal'
+    end
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'homes#top'
   get 'about' => 'homes#about'
+  resources :items, only:[:index, :show]
+  resources :cart_items, only:[:index, :create, :update, :destroy] do
+    collection do
+      delete 'destroy_all'
+    end
+  end
+  resources :orders, only:[:new, :create, :index, :show]  do
+    collection do
+      post 'comfirm'
+      get 'complete'
+    end
+  end
+  resources :addresses, except:[:show, :new]
 
 end
