@@ -1,0 +1,31 @@
+<div>
+  <%= customer.name %>さんの会員詳細
+</div>
+
+<div>
+  <ul>
+    <li>会員ID<</li>
+    <li>氏名</li>
+    <li>フリガナ</li>
+    <li>郵便番号</li>
+    <li>住所</li>
+    <li>電話番号</li>
+    <li>メールアドレス</li>
+    <li>会員ステータス</li>
+  </ul>
+</div>
+  <%= customer.id %>
+  <%= customer.self.name %>
+  <%= #フリガナ %>
+  <%= customer.postal_code %>
+  <%= customer.address %>
+  <%= customer.telephone_number %>
+  <%= customer.email %>
+  <%= customer.is_active %>
+<div>
+
+</div>
+
+<%= link_to "編集する", edit_admin_customer_path, class: "btn btn-success" %>
+
+<%= link_to "注文履歴一覧を見る", admin_root_path, class: "btn btn-primary" %>

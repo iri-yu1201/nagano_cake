@@ -2,23 +2,7 @@
 
 class Admins::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-  def new
-    @admin = Admin.new
-  end
-
-  def create
-    @admin = Admin.new(admin_params)
-    if @admin.save
-    redirect_to admin_root_path
-    else
-    render :new
-    end
-  end
   
-  def destroy
-    session[:admin_id] = nil
-    redirect_to root_path
-  end
   # GET /resource/sign_in
   # def new
 
@@ -41,9 +25,5 @@ class Admins::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-  private
-  def admin_params
-    params.require(:admin).permit(:email, :password)
-  end
 
 end
