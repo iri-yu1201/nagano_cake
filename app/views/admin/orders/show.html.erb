@@ -51,15 +51,18 @@
     <td><%= item.name %></td>
     <td><%= item.price %></td>
     <td><%= order_item.quantity %></td>
-    <td><%=#小計  %></td>
-    <td><%= order_item.making_status</td>
+    <td><%= item.add_tax_item_price*order_item.quantity  %></td>
+      <%= form_with model: @order_item , local:true do |f| %>
+    <td><%= f.select :order_item.making_status %></td>
     <td><%= f.submit "更新", class: "btn btn-success" %></td>
   </tbody>
 </table>
 
 <div>
   <p>商品合計</p>
-  <%= %>
+  <%= @total_price %>
   <p>送料</p>
+  <%= @order.shipping %>
   <p><strong>請求金額合計</strong></p>
+  <strong><%= @order.billing_amount %>円</strong>
 </div>

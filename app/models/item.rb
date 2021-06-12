@@ -6,7 +6,7 @@ class Item < ApplicationRecord
 
   attachment :image
 
-  def  add_tax_item_price
+  def  add_tax_item_price #税込価格
     (self.price * 1.10).round
   end
 
