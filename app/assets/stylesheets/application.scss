@@ -17,6 +17,13 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-;
+
+}
+
 .container {
   text-align: center;
 }
@@ -24,3 +31,28 @@
 .field {
   margin: 20px 0 20px;
 }
+
+
+.title {
+  background-color: #EEEEEE;
+  width: 20%;
+}
+
+
+.btn-circle-3d {
+  display: inline-block;
+  text-decoration: none;
+  color: rgba(152, 152, 152, 0.43);/*アイコン色*/
+  width: 40px;
+  height: 40px;
+  line-height: 80px;
+  font-size: 40px;
+  border-radius: 50%;
+  text-align: center;
+  overflow: hidden;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.5), 0 2px 2px rgba(0, 0, 0, 0.19);
+  border-bottom: solid 2px #b5b5b5;
+}
+
