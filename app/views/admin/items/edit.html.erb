@@ -5,7 +5,7 @@
 <div class="row no-gutters">
 
   <div class="col-md-6 offset-md-3 pt-5">
-    <%= form_with model: @item, url: admin_items_path, local:true do |f| %>
+    <%= form_with model: @item, url: admin_item_path(@item.id), local:true do |f| %>
       <div class="form-group">
       <%= f.label :image_id, "商品画像" %>
       <%= f.attachment_field :image %>
@@ -17,7 +17,7 @@
       <div class="form-group">
         <%= f.label :introduction, "商品説明" %>
         <%= f.text_area :introduction %>
-      </div>  
+      </div>
       <div class="form-group">
         <%= f.label :genre_id, "ジャンル" %>
         <%= f.collection_select(:genre_id, @genres, :id, :name, {prompt: "--選択してください--"}) %>
@@ -30,9 +30,9 @@
         <%= f.label :is_active, "販売ステータス" %>
         <%= f.radio_button :is_active, "販売中" %>販売中<%= f.radio_button :is_active, "販売停止中" %>販売停止中
       </div>
-    
+
       <%= f.submit "変更を保存", class: "btn btn-success" %>
-    
+
     <% end %>
   </div>
 </div>
