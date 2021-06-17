@@ -31,10 +31,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :customer, only:[:show, :edit, :update] do
+  resources :customers, only:[:show, :edit, :update] do
     collection do
-      get 'unsubscribe'
-      patch 'withdrawal'
+      get ':id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+      patch ':id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
     end
   end
 
