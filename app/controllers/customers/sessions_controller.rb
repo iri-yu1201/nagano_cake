@@ -3,6 +3,9 @@
 class Customers::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
+  #退会後のログインを阻止
+   before_action :reject_inactive_customer, only: [:create]
+
   # GET /resource/sign_in
   # def new
   #   super
@@ -17,6 +20,15 @@ class Customers::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
+
+  def reject_inactive_customer
+    @customer = Customer.find_by(email: params[:customer][:email])
+    if @customer
+      if @customer.valid_password?(params[:customer][:password]) && !@customer.is_active
+        redirect_to new_customer_session_path
+      end
+    end
+  end
 
   # protected
 
