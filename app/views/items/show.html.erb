@@ -13,9 +13,10 @@
     <div class="form-group">
         ￥<%= @item.add_tax_item_price.to_s(:dalimited) %>(税込)
     </div>
-
-    <%= f.select :@cart_items.amount, [1,2,3,4,5,6,7,8,9,10], "個数選択" %>
+  <%= form_with model: @cart_item, local:true do |f| %>
+    <%= f.select :@cart_item.amount, [1,2,3,4,5,6,7,8,9,10], "個数選択" %>
     <%= f.submit "カートに入れる", cart_items_path, class: "btn btn-success" %>
+  <% end %>
   </div>
 
 </div>
