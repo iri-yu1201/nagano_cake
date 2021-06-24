@@ -40,10 +40,11 @@ Rails.application.routes.draw do
 
   resources :orders, only:[:new, :create, :index, :show]  do
     collection do
-      get 'comfirm'
+      post 'comfirm'
       get 'complete'
     end
   end
+  
   resources :addresses, except:[:show, :new]
 
 end
