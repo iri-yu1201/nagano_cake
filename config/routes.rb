@@ -42,9 +42,10 @@ Rails.application.routes.draw do
     collection do
       post 'comfirm'
       get 'complete'
+
     end
   end
-  
+
   resources :addresses, except:[:show, :new]
 
 end

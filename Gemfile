@@ -57,3 +57,8 @@ gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
 
 gem 'pry-rails'
+
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
+
+gem 'pry-byebug'
