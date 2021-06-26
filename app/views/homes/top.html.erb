@@ -14,7 +14,7 @@
   <% @items.each do |item| %>
   <div class="col-3">
     <%= attachment_image_tag item, :image, :fill, 200, 150, format:'jpeg' %>
-    <%= item.name %><br>
+    <strong><%= item.name %></strong><br>
     ￥<%= item.price %>
   </div>
 
@@ -23,3 +23,4 @@
   <div class="col-md-3 offset-md-9">
     <%= link_to "全ての商品を見る＞", items_path %>
   </div>
+</div>
