@@ -36,8 +36,9 @@
         <td><%= sum %></td>
       </tr>
       <tr>
+        <% @order.biling_amount = sum+@order.shipping %>
         <td>請求金額</td>
-        <td><%= sum+@order.shipping %></td>
+        <td><%= @order.biling_amount %></td>
       </tr>
     </table>
   </div>
@@ -55,7 +56,7 @@
   <%= f.hidden_field :postal_code %>
   <%= f.hidden_field :address %>
   <%= f.hidden_field :name %>
-  <%# f.hidden_field :biling_amount %>
+  <%= f.hidden_field :biling_amount %>
   <%= f.hidden_field :payment_method %>
 
   <%= f.submit "注文を確定する", class: "btn btn-success" %>
