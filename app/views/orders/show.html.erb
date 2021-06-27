@@ -4,11 +4,11 @@
 
 <div class="row">
   <div class="col-7">
-    <p><strong>注文情報</strong></p>
+    <p class="subhead"><strong>注文情報</strong></p>
     <table border="1">
       <tr>
         <td>注文日</td>
-        <td><%= @order.create_at.strftime('%Y/%m/%d') %></td>
+        <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
       </tr>
       <tr>
         <td>配送先</td>
@@ -29,11 +29,11 @@
     </table>
   </div>
   <div class="col-3">
-    <p><strong>請求情報</strong></p>
-    <tabl border="1">
+    <p class="subhead"><strong>請求情報</strong></p>
+    <table border="1">
       <tr>
         <td>商品合計</td>
-        <td><%= %></td>
+        <td><%= @order.biling_amount - @order.shipping %></td>
       </tr>
       <tr>
         <td>配送料</td>
@@ -46,26 +46,28 @@
     </table>
   </div>
 </div>
-<div>
-  <p><strong>注文内容</strong></p>
-  <table border="1">
-    <thead>
-      <tr>
-        <td>商品</td>
-        <td>単価(税込)</td>
-        <td>個数</td>
-        <td>小計</td>
-      </tr>
-    </thead>
-    <tbody>
-      <% @order_items.each do |order_item| %>
-      <tr>
-        <td><%= @order_items.item.name %></td>
-        <td><%= @order_items.price %></td>
-        <td><%= @order_items.quantity %></td>
-        <td><%= @order_items.price*@order_items.quantity %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+<div class="row">
+  <div class="col-9">
+    <p class="subhead"><strong>注文内容</strong></p>
+    <table border="1">
+      <thead>
+        <tr>
+          <td>商品</td>
+          <td>単価(税込)</td>
+          <td>個数</td>
+          <td>小計</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @order.order_items.each do |item| %>
+        <tr>
+          <td><%= item.item.name %></td>
+          <td><%= item.price %></td>
+          <td><%= item.quantity %></td>
+          <td><%= item.price*item.quantity %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

@@ -7,23 +7,15 @@ class OrdersController < ApplicationController
     @addresses = Address.all
   end
 
-  def index
-    @orders = current_customer.orders.all
-  end
-
-  def show
-    @order = Order.find(params[:id])
-  end
-
-
-
   #注文情報の確認画面
 
   def comfirm
+
     @order = Order.new(
       customer_id: current_customer.id,
       payment_method: params[:order][:payment_method],
-      shipping: 800
+      shipping: 800,
+      biling_amount: params[:order][:biling_amount]
     )
     if params[:order][:address_select] == "0"
       @order.postal_code = current_customer.postal_code
@@ -64,9 +56,19 @@ class OrdersController < ApplicationController
 
   def complete
   end
+  
+  def index
+    @orders = current_customer.orders
+    
+    
+  end
+
+  def show
+    @order = Order.find(params[:id])
+  end
 
   private
   def order_params
-    params.require(:order).permit(:payment_method, :postal_code, :address, :name)
+    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :biling_amount)
   end
 end
