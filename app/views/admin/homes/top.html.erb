@@ -10,10 +10,19 @@
 
     <% @orders.each do |order| %>
       <tr>
-        <td><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-        <td><%= order.customer.name %></td>
-        <td><%= order.order_items(:quantity) %></td>
+        <td><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M'), admin_order_path(order.id) %></td>
+        <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
+        <td>
+          <% total = 0 %>
+            <% order.order_items.each do |order_item| %>
+              <% total += order_item.quantity%>
+            <% end %>
+          <%= total %>
+        </td>
         <td><%= order.status %></td>
       </tr>
     <% end %>
   </table>
+
+  <%= will_paginate @orders, :next_label => 'Next &gt' %>
+
