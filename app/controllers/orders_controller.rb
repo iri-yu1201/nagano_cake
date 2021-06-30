@@ -29,14 +29,16 @@ class OrdersController < ApplicationController
       @order.address = @address.address
       @order.name = @address.name
     elsif params[:order][:address_select] == "2"
-      @order.postal_code = params[:order][:postal_code]
-      @order.address = params[:order][:address]
-      @order.name = params[:order][:name]
-      #if @address.save
-        #@order.postal_code = @address.postal_code
-        #@order.name = @address.name
-        #@order.address = @address.address
-      #end
+      @address = Address.new
+      @address.postal_code = params[:order][:postal_code]
+      @address.address = params[:order][:address]
+      @address.name = params[:order][:name]
+      @address.customer_id = current_customer.id
+      if @address.save
+        @order.postal_code = @address.postal_code
+        @order.name = @address.name
+        @order.address = @address.address
+      end
     end
   end
 
