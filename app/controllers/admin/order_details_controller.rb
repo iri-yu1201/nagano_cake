@@ -8,7 +8,7 @@ class Admin::OrderDetailsController < ApplicationController
   end
 
   def order_item_params
-    params.require(:order_item).permit(:making_statuses)
+    params.require(:order_item).permit(:making_status)
   end
 
 end
