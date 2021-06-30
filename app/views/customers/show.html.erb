@@ -7,34 +7,36 @@
   <%= link_to "編集する", edit_customer_path(@customer.id), class: "btn btn-success" %>
 </div>
 
-
-<table border="1">
-  <tr align="left">
-    <td>氏名</td>
-    <td><%= @customer.last_name %><%= @customer.first_name %></td>
-  </tr>
-  <tr align="left">
-    <td>カナ</td>
-    <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
-  </tr>
-  <tr align="left">
-    <td>郵便番号</td>
-    <td><%= @customer.postal_code %></td>
-  </tr>
-  <tr align="left">
-    <td>住所</td>
-    <td><%= @customer.address %></td>
-  </tr>
-  <tr align="left">
-    <td>電話番号</td>
-    <td><%= @customer.telephone_number %></td>
-  </tr>
-  <tr align="left">
-    <td>メールアドレス</td>
-    <td><%= @customer.email %></td>
-  </tr>
-
-</table>
+<div class="row">
+  <div class="col-xs-8">
+    <table class="table table-bordered">
+      <tr>
+        <td>氏名</td>
+        <td><%= @customer.last_name %><%= @customer.first_name %></td>
+      </tr>
+      <tr>
+        <td>カナ</td>
+        <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
+      </tr>
+      <tr>
+        <td>郵便番号</td>
+        <td><%= @customer.postal_code %></td>
+      </tr>
+      <tr>
+        <td>住所</td>
+        <td><%= @customer.address %></td>
+      </tr>
+      <tr>
+        <td>電話番号</td>
+        <td><%= @customer.telephone_number %></td>
+      </tr>
+      <tr>
+        <td>メールアドレス</td>
+        <td><%= @customer.email %></td>
+      </tr>
+    </table>
+  </div>
+</div>
 
 <div class="form">
   <strong>配送先</strong>

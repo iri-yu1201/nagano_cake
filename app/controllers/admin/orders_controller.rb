@@ -3,12 +3,18 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @order_item = OrderItem.find(params[:id])
 
   end
 
   def update
     @order = Order.find(params[:id])
+    @order_items = @order.order_items
     @order.update(order_params)
+    
+    if @order.status == 1
+      @order_items.update(making_status: 1)
+    end
     redirect_to admin_order_path(@order)
   end
 

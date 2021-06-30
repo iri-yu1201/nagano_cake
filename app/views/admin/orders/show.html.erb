@@ -1,6 +1,6 @@
 <h4 class="title">注文履歴詳細</h4>
 <div class="row">
-  <div class="col-">
+  <div class="col-6">
     <table>
       <tr>
         <th>購入者</th>
@@ -42,16 +42,17 @@
     </table>
   </div>
 </div>
-
+<div class="row">
+  <div class="col-xs-9">
     <table class="table table-bordered">
       <thead>
         <tr>
-          <td>商品名</td>
-          <td>単価(税込)</td>
-          <td>数量</td>
-          <td>小計</td>
-          <td>製作ステータス</td>
-          <td></td>
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th>製作ステータス</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -63,7 +64,7 @@
             <td><%= item.quantity %></td>
             <td><%= item.item.price*item.quantity  %></td>
               <%= form_with model: @order_item, url: admin_order_detail_path, local:true do |f| %>
-            <td><%= f.select :order_item, OrderItem.making_statuses.keys.map { |k| [k,k]}, {} %></td>
+            <td><%= f.select :making_status, OrderItem.making_statuses.keys.map { |k| [k,k]}, {} %></td>
             <td><%= f.submit "更新", class: "btn btn-success" %></td>
               <% end %>
             <% sum = sum +item.item.price*item.quantity %>
@@ -71,7 +72,7 @@
           <% end %>
       </tbody>
     </table>
-
+  </div>
 
   <div class="col-3">
     <table>
@@ -90,3 +91,4 @@
       </tr>
     </table>
   </div>
+</div>

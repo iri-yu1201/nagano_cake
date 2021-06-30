@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     @addresses = Address.all
+    @address = Address.new
   end
 
   #注文情報の確認画面
@@ -31,6 +32,11 @@ class OrdersController < ApplicationController
       @order.postal_code = params[:order][:postal_code]
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
+      #if @address.save
+        #@order.postal_code = @address.postal_code
+        #@order.name = @address.name
+        #@order.address = @address.address
+      #end
     end
   end
 
@@ -56,11 +62,11 @@ class OrdersController < ApplicationController
 
   def complete
   end
-  
+
   def index
     @orders = current_customer.orders
-    
-    
+
+
   end
 
   def show

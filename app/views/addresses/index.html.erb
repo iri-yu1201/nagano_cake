@@ -10,7 +10,7 @@
     </tr>
     <tr>
       <td>住所</td>
-      <td><%= f.text_field :address, style: "width: 270%;" %></td>
+      <td><%= f.text_field :address, style: "width: 80%;" %></td>
     </tr>
     <tr>
       <td>宛名</td>
@@ -18,7 +18,7 @@
     </tr>
   </table>
   <%= f.submit "新規登録", class: "btn btn-success btn-md" %>
-<% end %>
+<% end %><br>
 
   <table class="table table-bordered">
     <thead>
@@ -39,7 +39,7 @@
           <%= address.address %>
         </td>
         <td>
-          <%=address.name %>
+          <%= address.name %>
         </td>
         <td>
           <%= link_to "編集する", edit_address_path(address.id), class: "btn btn-success" %>

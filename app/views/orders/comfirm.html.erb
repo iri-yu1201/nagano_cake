@@ -44,11 +44,11 @@
   </div>
 </div>
 
-<div>
+<div class="subhead" >
   <h4><strong>支払方法</strong></h4>
     <%= @order.payment_method %>
   <h4><strong>お届け先</strong></h4>
-    <%= @order.postal_code %><%= @order.address %><br>
+    〒<%= @order.postal_code %><%= @order.address %><br>
     <%= @order.name %>
 </div>
 
