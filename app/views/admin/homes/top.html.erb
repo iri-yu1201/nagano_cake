@@ -1,0 +1,28 @@
+<h4 class="title" >注文履歴一覧</h4>
+
+  <table class="table table-hover table-inverse" >
+    <tr>
+      <th>購入日時</th>
+      <th>購入者</th>
+      <th>注文個数</th>
+      <th>注文ステータス</th>
+    </tr>
+
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M'), admin_order_path(order.id) %></td>
+        <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
+        <td>
+          <% total = 0 %>
+            <% order.order_items.each do |order_item| %>
+              <% total += order_item.quantity%>
+            <% end %>
+          <%= total %>
+        </td>
+        <td><%= order.status %></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <%= will_paginate @orders, :next_label => 'Next &gt' %>
+

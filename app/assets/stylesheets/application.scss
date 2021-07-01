@@ -1,0 +1,120 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+td {
+  padding-bottom: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.about {
+  padding-top: 15px;
+}
+
+.welcome {
+  padding: 8px 0;
+
+}
+
+.unsubsucribe {
+  padding-bottom: 20px;
+
+}
+
+.container {
+  text-align: center;
+}
+
+.field {
+  margin: 20px 0 20px;
+  text-align: left;
+}
+
+
+.title {
+  background-color: #EEEEEE;
+  width: 20%;
+  margin-bottom: 10px;
+}
+
+.title2 {
+  background-color: #EEEEEE;
+  width: 27%;
+  margin-bottom: 10px;
+}
+
+.cation {
+  background-color: #EEEEEE;
+  width: 30%;
+}
+
+
+.btn-circle {
+    display:inline-block;
+    text-decoration: none;
+    background:#FFFAFA;
+    text-align:center;
+    color:#000000;
+    font-size:20px;
+    border-radius:30px;
+    box-shadow:0px 5px 8px 0px #BBBBBB ;
+    text-shadow:0px 1px 1px #444444 ;
+    transition: all 0.8s ease;
+}
+
+.able {
+  color: lime;
+}
+
+.enable {
+  color: silver;
+}
+
+//ボタンレイアウト
+.form {
+  text-align: left;
+  margin: 10px;
+  padding: 10px;
+}
+
+.top-box {
+  text-align: center;
+  padding: 100px 0;
+  width: 100%;
+}
+
+.subhead {
+  text-align: left;
+  margin: 10px 0;
+}
+
+table {
+  width: 100%;
+  text-align: left;
+}
+
+.form_page {
+  
+}
