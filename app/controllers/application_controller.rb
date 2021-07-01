@@ -2,8 +2,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-  
   #Deviseが元から用意しているcolumn以外を許可する為の記述
+
   protected
 
   def configure_permitted_parameters
@@ -11,6 +11,23 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def after_sign_up_path_for(resource)
+    case resource
+    when Customer 
+      customer_path
+    end
+  end
+
+  def after_sign_in_path_for(resource)
+    case resource
+    when Admin
+      admin_root_path
+    when Customer
+      root_path
+    end
+  end
+
   def after_sign_out_path_for(resource_or_scope)
     if resource_or_scope == :customer
         root_path

@@ -34,7 +34,7 @@
         <th>注文ステータス</th>
         <td>
         <%= form_with model: @order, url: admin_order_path, local:true do |f| %>
-          <%= f.select :status, Order.statuses.keys.map { |k| [k,k]}, {} %>
+          <%= f.select :status, Order.statuses.keys.map{ |k| [I18n.t("enums.order.status.#{k}"),k]}, {} %>
           <%= f.submit "更新", class: "btn btn-success" %>
         <% end %>
         </td>
@@ -63,8 +63,9 @@
             <td><%= item.item.price %></td>
             <td><%= item.quantity %></td>
             <td><%= item.item.price*item.quantity  %></td>
-              <%= form_with model: @order_item, url: admin_order_detail_path, local:true do |f| %>
-            <td><%= f.select :making_status, OrderItem.making_statuses.keys.map { |k| [k,k]}, {} %></td>
+              <%= form_with model: item, url: admin_order_detail_path, method: :patch, local:true do |f| %>
+            <td><%= f.select :making_status, OrderItem.making_statuses.keys.map{ |k|  [I18n.t("enums.order_item.making_status.#{k}"), k]} %></td>
+            <%= f.hidden_field :order_item_id, value: item.id %>
             <td><%= f.submit "更新", class: "btn btn-success" %></td>
               <% end %>
             <% sum = sum +item.item.price*item.quantity %>

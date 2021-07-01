@@ -3,17 +3,17 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_item = OrderItem.find(params[:id])
-
   end
 
   def update
     @order = Order.find(params[:id])
-    @order_items = @order.order_items
     @order.update(order_params)
-    
-    if @order.status == 1
-      @order_items.update(making_status: 1)
+    if @order.status == "入金確認"
+      @order.order_items.each do |order_item|
+        if order_item.making_status == "製作不可"
+          order_item.update(making_status: 1)
+        end
+      end
     end
     redirect_to admin_order_path(@order)
   end
